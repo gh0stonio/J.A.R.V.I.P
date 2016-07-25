@@ -7,8 +7,11 @@
     "start": "webpack-dev-server --hot --inline --debug --devtool cheap-module-sourcemap --output-pathinfo"
   },
   "dependencies": {
+    "immutable": "^3.8.1",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.2.1",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
   },
   "devDependencies": {
     "babel-core": "^6.11.4",

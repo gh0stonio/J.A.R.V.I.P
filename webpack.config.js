@@ -13,7 +13,7 @@ module.exports = {
   output: {
     path: './dist',
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'jarvip.js'
   },
   devServer: {
     contentBase: './demo',
