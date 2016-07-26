@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Video from '../containers/Video';
+import FakeVideoTemplate from '../components/fakeVideoTemplate';
 import PlayerActions from '../actions';
 
 class App extends Component {
@@ -9,9 +10,7 @@ class App extends Component {
     const { actions } = this.props;
 
     return (
-      <div className='jarvip'>
-        <Video actions={actions} />
-      </div>
+      <FakeVideoTemplate />
     );
   }
 }

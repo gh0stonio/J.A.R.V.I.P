@@ -1,0 +1,18 @@
+// App colors
+$white: #fff;
+$light-grey: #d6dbdf;
+$medium-grey: #425669;
+$dark-grey: #2c3e50;
+$active-color: #1abc9c;
+$passive-color: #475d72;
+
+// Controlbar colors
+$control-bar-background-color: $dark-grey;
+$control-bar-color: $white;
+$control-bar-icon-active: $active-color;
+$control-bar-icon-passive: $passive-color;
+$contol-bar-progress-background: $medium-grey;
+$contol-bar-progress-played: $active-color;
+$contol-bar-progress-loaded: $light-grey;
+$contol-bar-progress-handle: #16a085;;
+$contol-bar-progress-handle-focus: #148d75;

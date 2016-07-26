@@ -8,7 +8,7 @@ import App from './containers/App';
 const store = createStore(reducer, window.devToolsExtension && window.devToolsExtension());
 
 // import style
-require('./styles/app.scss');
+require('./assets/styles/app.scss');
 
 render(
   <Provider store={store}>
