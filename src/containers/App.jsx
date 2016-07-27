@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Video from '../containers/Video';
 import PlayerActions from '../actions';
+
+// Containers / Components
+import Video from '../containers/Video';
+import Time from '../containers/controls/Time';
 
 class App extends Component {
   render () {
@@ -32,11 +35,7 @@ class App extends Component {
             </div>
             <div className='col-xs-3'>
               <div className='control'>
-                <div className='time-control'>
-                  <span className='currentTime'>1:13:37</span>
-                  <span className='divider'> / </span>
-                  <span className='duration'>1:42:30</span>
-                </div>
+                <Time />
               </div>
             </div>
             <div className='col-xs-6'></div>

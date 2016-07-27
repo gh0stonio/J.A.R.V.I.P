@@ -10,6 +10,14 @@ class VideoContainer extends Component {
     var videoEl = findDOMNode(this);
 
     actions.attachDOM(videoEl);
+
+    videoEl.addEventListener('canplay', function () {
+      actions.setDuration(videoEl.duration);
+    }, false);
+
+    videoEl.addEventListener('timeupdate', function () {
+      actions.updateCurrentTime(videoEl.currentTime);
+    }, false);
   }
 
   render () {
