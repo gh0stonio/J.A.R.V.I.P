@@ -43,7 +43,7 @@
     }
 
     span.currentTime {
-      color: $white;
+      color: $light-grey;
     }
 
     span.divider {
@@ -81,21 +81,6 @@
       left: -1px;
       position: absolute;
       top: 0;
-    }
-
-    .seek-handle {
-      background-color: $contol-bar-progress-handle;
-      width: 18px;
-      height: 18px;
-      top: 0;
-      position: absolute;
-      margin: -3px 0 0 -3px;
-      border-radius: 50%;
-      transition: background-color 0.25s;
-    }
-
-    .seek-handle:hover, .seek-handle:focus {
-      background-color: $contol-bar-progress-handle-focus;
     }
   }
 }

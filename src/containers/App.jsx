@@ -21,7 +21,6 @@ class App extends Component {
               <div className='progress-control'>
                 <div className='play-progress' style={{ width: '20%' }}></div>
                 <div className='load-progress' style={{ width: '40%' }}></div>
-                <div className='seek-handle' style={{ left: '20%' }}></div>
               </div>
             </div>
           </div>
