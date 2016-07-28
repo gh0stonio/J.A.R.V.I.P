@@ -1,5 +1,5 @@
 .control-bar {
-  height: 59px;
+  height: 50px;
   color: $control-bar-color;
   background: $control-bar-background-color;
 
@@ -9,7 +9,7 @@
     background-repeat: no-repeat;
     position: relative;
     text-align: center;
-    height: 47px;
+    height: 40px;
 
     span {
       font-family: "Flat-UI-Icons";
@@ -57,20 +57,20 @@
   }
 
     .progress-control {
-      height: 12px;
+      height: 10px;
       background: $contol-bar-progress-background;
       cursor: pointer;
 
       .play-progress, .load-progress {
         display: block;
-        height: 12px;
+        height: 10px;
         margin: 0;
         padding: 0;
       }
 
     .load-progress {
       display: block;
-      height: 12px;
+      height: 10px;
       margin: 0;
       padding: 0;
       background: $contol-bar-progress-loaded;
