@@ -1,0 +1,86 @@
+.control-bar {
+  height: 50px;
+  color: $control-bar-color;
+  background: $control-bar-background-color;
+
+  .control {
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    text-align: center;
+    height: 40px;
+
+    span {
+      font-family: "Flat-UI-Icons";
+      color: $control-bar-icon-active;
+      font-size: 16px;
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      margin: -0.5em 0 0 -0.5em;
+      user-select: none;
+    }
+  }
+
+  .volume-control span, .fullscreen-control span {
+    color: $control-bar-icon-passive;
+  }
+
+  .time-control {
+    cursor: default;
+    position: absolute;
+    top: 30%;
+    left: 5px;
+
+    span {
+      font-family: "Lato", Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: normal;
+      position: static;
+      margin: 0;
+    }
+
+    span.currentTime {
+      color: $light-grey;
+    }
+
+    span.divider {
+      color: $control-bar-icon-passive;
+      font-size: 14px;
+    }
+
+    span.duration {
+      color: $control-bar-icon-passive;
+    }
+  }
+
+    .progress-control {
+      height: 10px;
+      background: $contol-bar-progress-background;
+      cursor: pointer;
+
+      .play-progress, .load-progress {
+        display: block;
+        height: 10px;
+        margin: 0;
+        padding: 0;
+      }
+
+    .load-progress {
+      display: block;
+      height: 10px;
+      margin: 0;
+      padding: 0;
+      background: $contol-bar-progress-loaded;
+    }
+
+    .play-progress {
+      background: $contol-bar-progress-played;
+      left: -1px;
+      position: absolute;
+      top: 0;
+    }
+  }
+}
