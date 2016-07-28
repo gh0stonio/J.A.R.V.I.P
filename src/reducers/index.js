@@ -3,7 +3,8 @@ import { ATTACH_DOM, SET_VIDEO_DURATION, UPDATE_CURRENTTIME } from '../actions';
 
 const initialState = new Map({
   duration: 0,
-  currentTime: 0
+  currentTime: 0,
+  buffer: 0
 });
 
 export default (state = initialState, action) => {

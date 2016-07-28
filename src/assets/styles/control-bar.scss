@@ -56,17 +56,17 @@
     }
   }
 
-    .progress-control {
-      height: 10px;
-      background: $contol-bar-progress-background;
-      cursor: pointer;
+  .progress-control {
+    height: 10px;
+    background: $contol-bar-progress-background;
+    cursor: pointer;
 
-      .play-progress, .load-progress {
-        display: block;
-        height: 10px;
-        margin: 0;
-        padding: 0;
-      }
+    .play-progress, .load-progress {
+      display: block;
+      height: 10px;
+      margin: 0;
+      padding: 0;
+    }
 
     .load-progress {
       display: block;
@@ -78,7 +78,6 @@
 
     .play-progress {
       background: $contol-bar-progress-played;
-      left: -1px;
       position: absolute;
       top: 0;
     }

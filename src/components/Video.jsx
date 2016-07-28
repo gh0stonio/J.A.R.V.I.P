@@ -4,8 +4,8 @@ const Video = () => {
   const style = {
     width: 600
   };
-  const url = 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4';
-  const poster = 'http://images.2803.fr/uploads/2008/06/big-buck-bunny-2.jpg';
+  const url = 'http://www.html5videoplayer.net/videos/toystory.mp4';
+  const poster = 'http://i2.wp.com/smallthings.fr/wp-content/uploads/2016/05/toy_story_wallpaper_by_artifypics-d5gss19.jpg?resize=640%2C360';
 
   return (
     <video style={style} src={url} poster={poster}></video>

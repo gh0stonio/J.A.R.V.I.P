@@ -6,6 +6,7 @@ import PlayerActions from '../actions';
 // Containers / Components
 import Video from '../containers/Video';
 import Time from '../containers/controls/Time';
+import ProgressBar from '../containers/controls/ProgressBar';
 
 class App extends Component {
   render () {
@@ -21,10 +22,7 @@ class App extends Component {
         <div className='control-bar'>
           <div className='row'>
             <div className='col-xs-12'>
-              <div className='progress-control'>
-                <div className='play-progress' style={{ width: '20%' }}></div>
-                <div className='load-progress' style={{ width: '40%' }}></div>
-              </div>
+              <ProgressBar />
             </div>
           </div>
           <div className='row'>
