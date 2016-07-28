@@ -4,7 +4,6 @@
   background: $control-bar-background-color;
 
   .control {
-    cursor: pointer;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
@@ -12,15 +11,18 @@
     height: 40px;
 
     span {
-      font-family: "Flat-UI-Icons";
       color: $control-bar-icon-active;
-      font-size: 16px;
+      font-size: 18px;
       position: absolute;
-      top: 48%;
+      top: 46%;
       left: 50%;
       margin: -0.5em 0 0 -0.5em;
       user-select: none;
     }
+  }
+
+  .play-control, .progress-control, .volume-control, .fullscreen-control {
+    cursor: pointer;
   }
 
   .volume-control span, .fullscreen-control span {
@@ -59,7 +61,6 @@
   .progress-control {
     height: 10px;
     background: $contol-bar-progress-background;
-    cursor: pointer;
 
     .play-progress, .load-progress {
       display: block;

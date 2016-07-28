@@ -28,7 +28,7 @@ class App extends Component {
           <div className='row'>
             <div className='col-xs-1'>
               <div className='play-control control'>
-                <span className='fui-play'></span>
+                <span className='glyphicon glyphicon-play'></span>
               </div>
             </div>
             <div className='col-xs-3'>
@@ -39,12 +39,12 @@ class App extends Component {
             <div className='col-xs-6'></div>
             <div className='col-xs-1'>
               <div className='volume-control control'>
-                <span className='fui-volume'></span>
+                <span className='glyphicon glyphicon-volume-up'></span>
               </div>
             </div>
             <div className='col-xs-1'>
               <div className='fullscreen-control control'>
-                <span className='fui-resize'></span>
+                <span className='glyphicon glyphicon-resize-full'></span>
               </div>
             </div>
           </div>
