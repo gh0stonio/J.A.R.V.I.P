@@ -15,8 +15,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TimeComponent);
+export default connect(mapStateToProps)(TimeComponent);

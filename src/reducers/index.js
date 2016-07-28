@@ -1,7 +1,9 @@
 import { Map } from 'immutable';
-import { ATTACH_DOM, SET_VIDEO_DURATION, UPDATE_CURRENTTIME } from '../actions';
+import { ATTACH_DOM, SET_VIDEO_DURATION, UPDATE_CURRENTTIME, PLAY, PAUSE, END } from '../actions';
+import { PLAYSTATE_INIT, PLAYSTATE_PLAYING, PLAYSTATE_PAUSED, PLAYSTATE_ENDED } from '../constants/';
 
 const initialState = new Map({
+  playstate: PLAYSTATE_INIT,
   duration: 0,
   currentTime: 0,
   buffer: 0
@@ -17,6 +19,17 @@ export default (state = initialState, action) => {
     }
     case UPDATE_CURRENTTIME: {
       return state.set('currentTime', action.currentTime);
+    }
+    case PLAY: {
+      state.get('el').play();
+      return state.set('playstate', PLAYSTATE_PLAYING);
+    }
+    case PAUSE: {
+      state.get('el').pause();
+      return state.set('playstate', PLAYSTATE_PAUSED);
+    }
+    case END: {
+      return state.set('playstate', PLAYSTATE_ENDED);
     }
     default: {
       return state;

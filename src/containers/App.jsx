@@ -7,6 +7,7 @@ import PlayerActions from '../actions';
 import Video from '../containers/Video';
 import Time from '../containers/controls/Time';
 import ProgressBar from '../containers/controls/ProgressBar';
+import PlaystateButton from '../containers/controls/PlaystateButton';
 
 class App extends Component {
   render () {
@@ -27,9 +28,7 @@ class App extends Component {
           </div>
           <div className='row'>
             <div className='col-xs-1'>
-              <div className='play-control control'>
-                <span className='glyphicon glyphicon-play'></span>
-              </div>
+              <PlaystateButton actions={actions} />
             </div>
             <div className='col-xs-3'>
               <div className='control'>

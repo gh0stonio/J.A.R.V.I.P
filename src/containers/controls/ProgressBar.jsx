@@ -13,8 +13,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProgressBarComponent);
+export default connect(mapStateToProps)(ProgressBarComponent);

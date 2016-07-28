@@ -18,6 +18,10 @@ class VideoContainer extends Component {
     videoEl.addEventListener('timeupdate', function () {
       actions.updateCurrentTime(videoEl.currentTime);
     }, false);
+
+    videoEl.addEventListener('ended', function () {
+      actions.end();
+    }, false);
   }
 
   render () {
