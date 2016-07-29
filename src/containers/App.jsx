@@ -8,6 +8,7 @@ import Video from '../containers/Video';
 import Time from '../containers/controls/Time';
 import ProgressBar from '../containers/controls/ProgressBar';
 import PlaystateButton from '../containers/controls/PlaystateButton';
+import VolumeButton from '../containers/controls/VolumeButton';
 
 class App extends Component {
   render () {
@@ -37,9 +38,7 @@ class App extends Component {
             </div>
             <div className='col-xs-6'></div>
             <div className='col-xs-1'>
-              <div className='volume-control control'>
-                <span className='glyphicon glyphicon-volume-up'></span>
-              </div>
+              <VolumeButton actions={actions} />
             </div>
             <div className='col-xs-1'>
               <div className='fullscreen-control control'>

@@ -4,6 +4,7 @@ export const UPDATE_CURRENTTIME = 'UPDATE_CURRENTTIME';
 export const PLAY = 'PLAY';
 export const PAUSE = 'PAUSE';
 export const END = 'END';
+export const MUTE_UNMUTE = 'MUTE_UNMUTE';
 
 export default {
   attachDOM: (el) => {
@@ -26,5 +27,11 @@ export default {
   },
   end: () => {
     return { type: END };
+  },
+  mute: () => {
+    return { type: MUTE_UNMUTE, muted: true };
+  },
+  unmute: () => {
+    return { type: MUTE_UNMUTE, muted: false };
   }
 };
