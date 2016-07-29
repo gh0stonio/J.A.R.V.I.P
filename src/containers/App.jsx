@@ -36,14 +36,9 @@ class App extends Component {
                 <Time />
               </div>
             </div>
-            <div className='col-xs-6'></div>
+            <div className='col-xs-7'></div>
             <div className='col-xs-1'>
               <VolumeButton actions={actions} />
-            </div>
-            <div className='col-xs-1'>
-              <div className='fullscreen-control control'>
-                <span className='glyphicon glyphicon-resize-full'></span>
-              </div>
             </div>
           </div>
         </div>
