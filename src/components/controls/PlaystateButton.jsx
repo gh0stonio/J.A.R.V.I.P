@@ -1,18 +1,18 @@
 import React, { PropTypes } from 'react';
 
-const PlaystateButton = ({ actionnablePlaystate, actions }) => {
-  const playstateClassname = 'glyphicon glyphicon-' + actionnablePlaystate;
+const PlaystateButton = ({ actionnablePlaystateClassName, updatePlaystateByClassName }) => {
+  const playstateClass = 'glyphicon glyphicon-' + actionnablePlaystateClassName;
 
   return (
-    <div className='play-control control' onClick={actions[actionnablePlaystate]}>
-      <span className={playstateClassname}></span>
+    <div className='play-control control' onClick={() => updatePlaystateByClassName(actionnablePlaystateClassName)}>
+      <span className={playstateClass}></span>
     </div>
   );
 };
 
 PlaystateButton.propTypes = {
-  actions: PropTypes.object.isRequired,
-  actionnablePlaystate: PropTypes.string.isRequired
+  updatePlaystateByClassName: PropTypes.func.isRequired,
+  actionnablePlaystateClassName: PropTypes.string.isRequired
 };
 
 export default PlaystateButton;

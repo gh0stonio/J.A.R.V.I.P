@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import actions from '../../actions/';
+import { seekByPercent } from '../../actions/';
 import ProgressBarComponent from '../../components/controls/ProgressBar';
 
 function computeProgressPercent (time, duration) {
@@ -19,9 +19,7 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps (dispatch) {
   return {
-    seek: (event) => {
-      dispatch(actions.seek(getSeekPositionPercent(event)));
-    }
+    seek: (event) => dispatch(seekByPercent(getSeekPositionPercent(event)))
   };
 }
 

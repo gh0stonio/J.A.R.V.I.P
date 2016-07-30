@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
-import { ATTACH_DOM, SET_VIDEO_DURATION, UPDATE_CURRENTTIME, PLAY, PAUSE, END, MUTE_UNMUTE, SEEK } from '../actions';
-import { PLAYSTATE_INIT, PLAYSTATE_PLAYING, PLAYSTATE_PAUSED, PLAYSTATE_ENDED } from '../constants/';
+import { ATTACH_DOM, SET_VIDEO_DURATION, UPDATE_CURRENTTIME, UPDATE_PLAYSTATE, TOGGLE_MUTE, SEEK_BY_PERCENT } from '../actions';
+import { PLAYSTATE_INIT, PLAYSTATE_PLAYING, PLAYSTATE_PAUSED } from '../constants/';
 
 const initialState = new Map({
   playstate: PLAYSTATE_INIT,
@@ -22,24 +22,27 @@ export default (state = initialState, action) => {
     case UPDATE_CURRENTTIME: {
       return state.set('currentTime', action.currentTime);
     }
-    case PLAY: {
-      state.get('el').play();
-      return state.set('playstate', PLAYSTATE_PLAYING);
+    case UPDATE_PLAYSTATE: {
+      switch (action.playstate) {
+        case PLAYSTATE_PLAYING:
+          state.get('el').play();
+          break;
+        case PLAYSTATE_PAUSED:
+          state.get('el').pause();
+          break;
+      }
+
+      return state.set('playstate', action.playstate);
     }
-    case PAUSE: {
-      state.get('el').pause();
-      return state.set('playstate', PLAYSTATE_PAUSED);
+    case TOGGLE_MUTE: {
+      var muted = !state.get('muted');
+
+      state.get('el').muted = muted;
+      return state.set('muted', muted);
     }
-    case END: {
-      return state.set('playstate', PLAYSTATE_ENDED);
-    }
-    case MUTE_UNMUTE: {
-      state.get('el').muted = action.muted;
-      return state.set('muted', action.muted);
-    }
-    case SEEK: {
+    case SEEK_BY_PERCENT: {
       var duration = state.get('duration');
-      var newCurrentTime = duration * action.position / 100;
+      var newCurrentTime = duration * action.percent / 100;
 
       state.get('el').currentTime = newCurrentTime;
       return state.set('currentTime', newCurrentTime);
