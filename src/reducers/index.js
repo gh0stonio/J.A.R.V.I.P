@@ -1,12 +1,12 @@
 import { Map } from 'immutable';
-import { ATTACH_DOM, SET_VIDEO_DURATION, UPDATE_CURRENTTIME, PLAY, PAUSE, END, MUTE_UNMUTE } from '../actions';
+import { ATTACH_DOM, SET_VIDEO_DURATION, UPDATE_CURRENTTIME, PLAY, PAUSE, END, MUTE_UNMUTE, SEEK } from '../actions';
 import { PLAYSTATE_INIT, PLAYSTATE_PLAYING, PLAYSTATE_PAUSED, PLAYSTATE_ENDED } from '../constants/';
 
 const initialState = new Map({
   playstate: PLAYSTATE_INIT,
   duration: 0,
   currentTime: 0,
-  buffer: 0,
+  buffer: 100,
   volume: 100,
   muted: false
 });
@@ -36,6 +36,13 @@ export default (state = initialState, action) => {
     case MUTE_UNMUTE: {
       state.get('el').muted = action.muted;
       return state.set('muted', action.muted);
+    }
+    case SEEK: {
+      var duration = state.get('duration');
+      var newCurrentTime = duration * action.position / 100;
+
+      state.get('el').currentTime = newCurrentTime;
+      return state.set('currentTime', newCurrentTime);
     }
     default: {
       return state;

@@ -24,7 +24,7 @@ class App extends Component {
         <div className='control-bar'>
           <div className='row'>
             <div className='col-xs-12'>
-              <ProgressBar />
+              <ProgressBar actions={actions} />
             </div>
           </div>
           <div className='row'>

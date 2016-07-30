@@ -1,16 +1,28 @@
 import { connect } from 'react-redux';
+import actions from '../../actions/';
 import ProgressBarComponent from '../../components/controls/ProgressBar';
 
 function computeProgressPercent (time, duration) {
   return time * 100 / duration;
 }
 
+function getSeekPositionPercent (event) {
+  return (event.pageX - event.currentTarget.getBoundingClientRect().left) * 100 / event.currentTarget.offsetWidth;
+}
+
 const mapStateToProps = (state) => {
-  // the data for the buffered progress is faked until the real buffer is handle
   return {
     playProgressPercent: computeProgressPercent(state.get('currentTime'), state.get('duration')),
-    loadProgressPercent: 100
+    loadProgressPercent: state.get('buffer')
   };
 };
 
-export default connect(mapStateToProps)(ProgressBarComponent);
+function mapDispatchToProps (dispatch) {
+  return {
+    seek: (event) => {
+      dispatch(actions.seek(getSeekPositionPercent(event)));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProgressBarComponent);

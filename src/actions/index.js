@@ -5,6 +5,7 @@ export const PLAY = 'PLAY';
 export const PAUSE = 'PAUSE';
 export const END = 'END';
 export const MUTE_UNMUTE = 'MUTE_UNMUTE';
+export const SEEK = 'SEEK';
 
 export default {
   attachDOM: (el) => {
@@ -33,5 +34,8 @@ export default {
   },
   unmute: () => {
     return { type: MUTE_UNMUTE, muted: false };
+  },
+  seek: (position) => {
+    return { type: SEEK, position };
   }
 };
