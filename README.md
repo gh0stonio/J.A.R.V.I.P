@@ -12,4 +12,4 @@
 J.A.R.V.I.P is a HTML5 video player.
 
 ## Documentation
-incoming ...
+To try it, just run ```npm start``` and go to http://localhost:8080, and that's all folks !
