@@ -1,0 +1,17 @@
+@import "./fonts.scss";
+
+.jarvip {
+  @import "./skins/default.scss";
+  @import "./icons.scss";
+  @import "./control-bar.scss";
+  @import "./bootstrap.scss";
+
+  display: inline-block;
+  overflow: hidden;
+
+  video {
+    width: 600px;
+    height: auto;
+    display: block;
+  }
+}
