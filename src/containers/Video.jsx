@@ -1,15 +1,29 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
 import VideoComponent from '../components/Video';
+import { attachDOM, setDuration, updateCurrentTime, updatePlaystate } from '../actions/';
+import { PLAYSTATE_ENDED } from '../constants/';
 
 class VideoContainer extends Component {
   componentDidMount () {
-    const { actions } = this.props;
+    const { dispatch } = this.props;
 
     var videoEl = findDOMNode(this);
 
-    actions.attachDOM(videoEl);
+    dispatch(attachDOM(videoEl));
+
+    videoEl.addEventListener('canplay', function () {
+      dispatch(setDuration(videoEl.duration));
+    }, false);
+
+    videoEl.addEventListener('timeupdate', function () {
+      dispatch(updateCurrentTime(videoEl.currentTime));
+    }, false);
+
+    videoEl.addEventListener('ended', function () {
+      dispatch(updatePlaystate(PLAYSTATE_ENDED));
+    }, false);
   }
 
   render () {
@@ -19,12 +33,4 @@ class VideoContainer extends Component {
   }
 }
 
-VideoContainer.propTypes = {
-  actions: PropTypes.object.isRequired
-};
-
-function mapStateToProps (state) {
-  return {};
-}
-
-export default connect(mapStateToProps)(VideoContainer);
+export default connect()(VideoContainer);
