@@ -10,9 +10,18 @@ const store = createStore(reducer, window.devToolsExtension && window.devToolsEx
 // import style
 require('./assets/styles/app.scss');
 
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('app')
-);
+// commonjs export instead of es6 because of babel/webpack library export combo
+module.exports = class JARVIP {
+  constructor (config) {
+    this.config = config;
+    this._render();
+  }
+  _render () {
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      document.getElementById('app')
+    );
+  }
+};

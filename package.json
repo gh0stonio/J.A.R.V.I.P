@@ -1,10 +1,10 @@
 {
-  "name": "j.a.r.v.i.p",
+  "name": "jarvip",
   "version": "0.1.0",
   "description": "Just A Rather Very Intelligent Player",
   "main": "server.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --debug --devtool cheap-module-sourcemap --output-pathinfo"
+    "start": "webpack-dev-server --hot --inline --progress --no-info"
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
