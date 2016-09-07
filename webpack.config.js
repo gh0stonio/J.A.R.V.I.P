@@ -1,5 +1,7 @@
+var path = require('path');
 var precss = require('precss');
 var autoprefixer = require('autoprefixer');
+var pkg = require('./package.json');
 
 module.exports = {
   entry: './src/app.jsx',
@@ -23,10 +25,15 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    path: './dist',
-    publicPath: '/',
-    filename: 'jarvip.js'
+    path: path.join(__dirname, '/lib'),
+    publicPath: '/lib',
+    filename: pkg.name + '.js',
+    library: pkg.name.toUpperCase(),
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
+  debug: true,
+  devtool: 'source-map',
   devServer: {
     contentBase: './demo',
     hot: true
