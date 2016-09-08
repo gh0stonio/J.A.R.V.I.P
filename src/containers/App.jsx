@@ -1,12 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-
-// Containers / Components
 import Video from '../containers/Video';
-import Time from '../containers/controls/Time';
-import ProgressBar from '../containers/controls/ProgressBar';
-import PlaystateButton from '../containers/controls/PlaystateButton';
-import VolumeButton from '../containers/controls/VolumeButton';
+import { Time, ProgressBar, PlaystateButton, VolumeButton } from '../containers/controls';
 
 class App extends Component {
   render () {

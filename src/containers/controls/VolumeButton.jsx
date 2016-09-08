@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import VolumeButtonComponent from '../../components/controls/VolumeButton';
-import { toggleMute } from '../../actions/';
+import { VolumeButton } from '../../components/controls';
+import { toggleMute } from '../../actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -9,10 +9,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleMute: () => dispatch(toggleMute())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(VolumeButtonComponent);
+export default connect(mapStateToProps, { toggleMute })(VolumeButton);

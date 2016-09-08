@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { seekByPercent } from '../../actions/';
-import ProgressBarComponent from '../../components/controls/ProgressBar';
+import { seekByPercent } from '../../actions';
+import { ProgressBar } from '../../components/controls';
 
-function computeProgressPercent (time, duration) {
+const computeProgressPercent = (time, duration) => {
   return time * 100 / duration;
-}
+};
 
-function getSeekPositionPercent (event) {
+const getSeekPositionPercent = (event) => {
   return (event.pageX - event.currentTarget.getBoundingClientRect().left) * 100 / event.currentTarget.offsetWidth;
-}
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -17,10 +17,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-function mapDispatchToProps (dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     seek: (event) => dispatch(seekByPercent(getSeekPositionPercent(event)))
   };
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProgressBarComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ProgressBar);
