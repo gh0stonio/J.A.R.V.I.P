@@ -1,11 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 import reducer from './reducers';
 import App from './containers/App';
 
-const store = createStore(reducer, window.devToolsExtension && window.devToolsExtension());
+const store = createStore(reducer, compose(applyMiddleware(thunk), window.devToolsExtension && window.devToolsExtension()));
 
 // import style
 require('./assets/styles/app.scss');
