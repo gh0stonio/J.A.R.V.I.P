@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 // Containers / Components
@@ -10,11 +10,13 @@ import VolumeButton from '../containers/controls/VolumeButton';
 
 class App extends Component {
   render () {
+    const { video } = this.props;
+
     return (
       <div className='jarvip container-fluid'>
         <div className='row'>
           <div className='col-xs-12'>
-            <Video />
+            <Video video={video} />
           </div>
         </div>
         <div className='control-bar'>
@@ -42,5 +44,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  video: PropTypes.object.isRequired
+};
 
 export default connect()(App);

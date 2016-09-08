@@ -6,13 +6,19 @@
   </head>
   <body>
     <h1>J.A.R.V.I.P (amd)</h1>
-    <div id="app"></div>
+    <div id="player"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.1/require.min.js" charset="utf-8"></script>
     <script src="../lib/jarvip.js"></script>
     <script>
       require(['JARVIP'], function (JARVIP) {
-        var jarvip = new JARVIP({});
+        var jarvip = new JARVIP({
+          targetEl: document.getElementById('player'),
+          video: {
+            url:  'http://www.html5videoplayer.net/videos/toystory.mp4',
+            poster: 'http://i2.wp.com/smallthings.fr/wp-content/uploads/2016/05/toy_story_wallpaper_by_artifypics-d5gss19.jpg?resize=640%2C360'
+          }
+        });
       })
     </script>
   </body>

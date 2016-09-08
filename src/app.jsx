@@ -20,9 +20,9 @@ module.exports = class JARVIP {
   _render () {
     render(
       <Provider store={store}>
-        <App />
+        <App video={this.config.video} />
       </Provider>,
-      document.getElementById('app')
+      this.config.targetEl
     );
   }
 };

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
 import VideoComponent from '../components/Video';
@@ -11,10 +11,16 @@ class VideoContainer extends Component {
   }
 
   render () {
+    const { video } = this.props;
+
     return (
-      <VideoComponent />
+      <VideoComponent video={video} />
     );
   }
 }
+
+VideoContainer.propTypes = {
+  video: PropTypes.object.isRequired
+};
 
 export default connect()(VideoContainer);
