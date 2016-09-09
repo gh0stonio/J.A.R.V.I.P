@@ -5,11 +5,22 @@ var pkg = require('./package.json');
 
 module.exports = {
   entry: './src/app.jsx',
+  output: {
+    path: path.join(__dirname, '/lib'),
+    publicPath: '/lib',
+    filename: pkg.name + '.js',
+    library: pkg.name.toUpperCase(),
+    libraryTarget: 'umd',
+    umdNamedDefine: true
+  },
   module: {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loader: 'react-hot!babel'
+      loader: 'babel',
+      query: {
+        presets: ['es2015', 'stage-0', 'react', 'react-hmre']
+      }
     }, {
       test: /\.scss$/,
       loader: 'style-loader!css-loader!postcss-loader!sass-loader'
@@ -24,18 +35,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  output: {
-    path: path.join(__dirname, '/lib'),
-    publicPath: '/lib',
-    filename: pkg.name + '.js',
-    library: pkg.name.toUpperCase(),
-    libraryTarget: 'umd',
-    umdNamedDefine: true
-  },
   debug: true,
   devtool: 'source-map',
   devServer: {
-    contentBase: './demo',
-    hot: true
+    contentBase: './demo'
   }
 };

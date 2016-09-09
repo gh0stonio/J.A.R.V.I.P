@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-const Video = () => {
+const Video = ({ video }) => {
   const style = {
     width: 600
   };
-  const url = 'http://www.html5videoplayer.net/videos/toystory.mp4';
-  const poster = 'http://i2.wp.com/smallthings.fr/wp-content/uploads/2016/05/toy_story_wallpaper_by_artifypics-d5gss19.jpg?resize=640%2C360';
 
   return (
-    <video style={style} src={url} poster={poster}></video>
+    <video style={style} src={video.url} poster={video.poster}></video>
   );
+};
+
+Video.propTypes = {
+  video: PropTypes.object.isRequired
 };
 
 export default Video;

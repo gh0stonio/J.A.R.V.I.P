@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import PlaystateButtonComponent from '../../components/controls/PlaystateButton';
-import { updatePlaystate } from '../../actions/';
+import { PlaystateButton } from '../../components/controls';
+import { updatePlaystate } from '../../actions';
 import { PLAYSTATE_PLAYING, PLAYSTATE_PAUSED } from '../../constants/';
 
 var actionnableStateClassNameAssocitations = {
@@ -16,13 +16,13 @@ var classNameActionnableStateAssocitations = {
   'pause': PLAYSTATE_PAUSED
 };
 
-function getClassNameByPlaystate (currentPlaystate) {
+const getClassNameByPlaystate = (currentPlaystate) => {
   return actionnableStateClassNameAssocitations[currentPlaystate];
-}
+};
 
-function getPlaystateByClassName (className) {
+const getPlaystateByClassName = (className) => {
   return classNameActionnableStateAssocitations[className];
-}
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -36,4 +36,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlaystateButtonComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(PlaystateButton);
