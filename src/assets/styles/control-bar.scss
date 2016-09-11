@@ -1,86 +1,114 @@
-.control-bar {
-  height: 50px;
+.controls-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   color: $control-bar-color;
+  transform: translate(0, 0%);
+  transition: transform .3s ease;
   background: $control-bar-background-color;
 
-  .control {
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    text-align: center;
-    height: 40px;
+  &.hidden {
+    transform: translate(0, 130%);
+    transition: transform .3s ease;
+  }
 
-    span {
-      color: $control-bar-icon-active;
-      font-size: 18px;
-      position: absolute;
-      top: 46%;
-      left: 50%;
-      margin: -0.5em 0 0 -0.5em;
-      user-select: none;
+  .controls-container {
+    height: 36px;
+
+    .left-controls {
+      float: left;
+      height: 100%;
+      margin-left: 5px;
+    }
+
+    .right-controls {
+      float: right;
+      height: 100%;
+    }
+
+    .control-button {
+      display: inline-block;
+      position: relative;
+      border: none;
+      background-color: transparent;
+      padding: 0;
+      width: 36px;
+      height: 100%;
+      text-align: inherit;
+      font-size: 100%;
+      font-family: inherit;
+      cursor: default;
+      line-height: inherit;
+      border: none;
+      outline:none;
+      cursor: pointer;
+
+      span {
+        color: $control-bar-icon-active;
+        font-size: 16px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -0.5em 0 0 -0.5em;
+        user-select: none;
+      }
+
+      &.play-button {
+        span {
+          font-size: 140%;
+          top: 48%;
+        }
+      }
+    }
+
+    .control-display {
+      display: inline-block;
+      vertical-align: top;
+      padding: 0 5px;
+      white-space: nowrap;
+      line-height: 36px;
+
+      span {
+        font-size: 90%;
+
+        &.duration {
+          color: $medium-light-grey;
+        }
+      }
     }
   }
 
-  .play-control, .progress-control, .volume-control, .fullscreen-control {
-    cursor: pointer;
-  }
-
-  .volume-control span, .fullscreen-control span {
-    color: $control-bar-icon-passive;
-  }
-
-  .time-control {
-    cursor: default;
+  .progress-container {
     position: absolute;
-    top: 30%;
-    left: 5px;
+    height: 8px;
+    width: 100%;
+    bottom: 36px;
+    cursor: pointer;
 
-    span {
-      font-family: "Lato", Helvetica, Arial, sans-serif;
-      font-weight: 300;
-      font-size: 13px;
-      line-height: normal;
-      position: static;
-      margin: 0;
-    }
+    .progress-control {
+      background: $contol-bar-progress-background;
+      height: 100%;
 
-    span.currentTime {
-      color: $light-grey;
-    }
+      .play-progress, .load-progress {
+        display: block;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
 
-    span.divider {
-      color: $control-bar-icon-passive;
-      font-size: 14px;
-    }
+      .load-progress {
+        display: block;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: $contol-bar-progress-loaded;
+      }
 
-    span.duration {
-      color: $control-bar-icon-passive;
-    }
-  }
-
-  .progress-control {
-    height: 10px;
-    background: $contol-bar-progress-background;
-
-    .play-progress, .load-progress {
-      display: block;
-      height: 10px;
-      margin: 0;
-      padding: 0;
-    }
-
-    .load-progress {
-      display: block;
-      height: 10px;
-      margin: 0;
-      padding: 0;
-      background: $contol-bar-progress-loaded;
-    }
-
-    .play-progress {
-      background: $contol-bar-progress-played;
-      position: absolute;
-      top: 0;
+      .play-progress {
+        background: $contol-bar-progress-played;
+        position: absolute;
+        top: 0;
+      }
     }
   }
 }

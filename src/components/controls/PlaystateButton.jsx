@@ -4,9 +4,9 @@ const PlaystateButton = ({ actionnablePlaystateClassName, updatePlaystateByClass
   const playstateClass = 'glyphicon glyphicon-' + actionnablePlaystateClassName;
 
   return (
-    <div className='play-control control' onClick={() => updatePlaystateByClassName(actionnablePlaystateClassName)}>
+    <button className='control-button play-button' onClick={() => updatePlaystateByClassName(actionnablePlaystateClassName)}>
       <span className={playstateClass}></span>
-    </div>
+    </button>
   );
 };
 
