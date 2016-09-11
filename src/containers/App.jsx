@@ -39,24 +39,24 @@ class App extends Component {
           </div>
           <div className='controls-container'>
             <div className='left-controls'>
-              <button className='control-button' title='previous'>
+              <button className='control-button disabled' title='previous'>
                 <span className='glyphicon glyphicon-step-backward'></span>
               </button>
               <PlaystateButton />
-              <button className='control-button'>
+              <button className='control-button disabled'>
                 <span className='glyphicon glyphicon-step-forward'></span>
               </button>
               <Time />
             </div>
             <div className='right-controls'>
               <VolumeButton />
-              <button className='control-button'>
+              <button className='control-button disabled'>
                 <span className='glyphicon glyphicon-comment' title='subtitles'></span>
               </button>
-              <button className='control-button'>
+              <button className='control-button disabled'>
                 <span className='glyphicon glyphicon-resize-full' title='expand'></span>
               </button>
-              <button className='control-button'>
+              <button className='control-button disabled'>
                 <span className='glyphicon glyphicon-fullscreen' title='fullscreen'></span>
               </button>
             </div>

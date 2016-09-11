@@ -53,6 +53,14 @@
         user-select: none;
       }
 
+      &.disabled {
+        cursor: default;
+
+        span {
+          color: $medium-light-grey;
+        }
+      }
+
       &.play-button {
         span {
           font-size: 140%;
