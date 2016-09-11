@@ -8,9 +8,9 @@ const VolumeButton = ({ toggleMute, muted, volume }) => {
   var volumeButton = muted ? mutedButton : volume > 0.5 ? volumeUpButton : volumeDownButton;
 
   return (
-    <div className='volume-control control' onClick={toggleMute}>
+    <button className='control-button' onClick={toggleMute}>
       {volumeButton}
-    </div>
+    </button>
   );
 };
 

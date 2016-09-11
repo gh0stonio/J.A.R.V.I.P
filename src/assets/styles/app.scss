@@ -3,15 +3,18 @@
 .jarvip {
   @import "./skins/default.scss";
   @import "./icons.scss";
-  @import "./control-bar.scss";
   @import "./bootstrap.scss";
+  @import "./control-bar.scss";
 
-  display: inline-block;
+  position: relative;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
 
-  video {
-    width: 600px;
-    height: auto;
-    display: block;
+  .video-container {
+    video {
+      width: 100%;
+      height: 100%;
+    }
   }
 }

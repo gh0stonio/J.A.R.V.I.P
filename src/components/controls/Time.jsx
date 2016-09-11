@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 const Time = ({ duration, currentTime }) => {
   return (
-    <div className='time-control'>
+    <div className='control-display'>
       <span className='currentTime'>{currentTime}</span>
       <span className='divider'> / </span>
       <span className='duration'>{duration}</span>

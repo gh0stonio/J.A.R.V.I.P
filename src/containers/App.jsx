@@ -2,36 +2,63 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Video from '../containers/Video';
 import { Time, ProgressBar, PlaystateButton, VolumeButton } from '../containers/controls';
+import { PLAYSTATE_PLAYING } from '../constants';
 
 class App extends Component {
+  handleHideShowMenu () {
+    let { playstate } = this.props;
+    let jarvipDOM = this.refs.jarvip;
+    let controlsDOM = this.refs.controls;
+
+    jarvipDOM.onmouseover = () => {
+      controlsDOM.classList.remove('hidden');
+    };
+    jarvipDOM.onmouseout = () => {
+      if (playstate === PLAYSTATE_PLAYING) {
+        controlsDOM.classList.add('hidden');
+      }
+    };
+  }
+  componentDidMount () {
+    this.handleHideShowMenu();
+  }
+  componentDidUpdate () {
+    this.handleHideShowMenu();
+  }
   render () {
     const { video } = this.props;
 
     return (
-      <div className='jarvip container-fluid'>
-        <div className='row'>
-          <div className='col-xs-12'>
-            <Video video={video} />
-          </div>
+      <div className='jarvip' ref='jarvip'>
+        <div className='video-container'>
+          <Video video={video} />
         </div>
-        <div className='control-bar'>
-          <div className='row'>
-            <div className='col-xs-12'>
-              <ProgressBar />
-            </div>
+        <div className='controls-bar' ref='controls'>
+          <div className='progress-container'>
+            <ProgressBar />
           </div>
-          <div className='row'>
-            <div className='col-xs-1'>
+          <div className='controls-container'>
+            <div className='left-controls'>
+              <button className='control-button' title='previous'>
+                <span className='glyphicon glyphicon-step-backward'></span>
+              </button>
               <PlaystateButton />
+              <button className='control-button'>
+                <span className='glyphicon glyphicon-step-forward'></span>
+              </button>
+              <Time />
             </div>
-            <div className='col-xs-3'>
-              <div className='control'>
-                <Time />
-              </div>
-            </div>
-            <div className='col-xs-7'></div>
-            <div className='col-xs-1'>
+            <div className='right-controls'>
               <VolumeButton />
+              <button className='control-button'>
+                <span className='glyphicon glyphicon-comment' title='subtitles'></span>
+              </button>
+              <button className='control-button'>
+                <span className='glyphicon glyphicon-resize-full' title='expand'></span>
+              </button>
+              <button className='control-button'>
+                <span className='glyphicon glyphicon-fullscreen' title='fullscreen'></span>
+              </button>
             </div>
           </div>
         </div>
@@ -41,7 +68,14 @@ class App extends Component {
 }
 
 App.propTypes = {
-  video: PropTypes.object.isRequired
+  video: PropTypes.object.isRequired,
+  playstate: PropTypes.string.isRequired
 };
 
-export default connect()(App);
+const mapStateToProps = (state) => {
+  return {
+    playstate: state.get('playstate')
+  };
+};
+
+export default connect(mapStateToProps)(App);
