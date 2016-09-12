@@ -1,39 +1,55 @@
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { PlaystateButton } from '../../components/controls';
-import { updatePlaystate } from '../../actions';
-import { PLAYSTATE_PLAYING, PLAYSTATE_PAUSED } from '../../constants/';
+import { play, pause } from '../../actions';
+import { PLAYSTATE_INIT, PLAYSTATE_PLAYING, PLAYSTATE_PAUSED, PLAYSTATE_ENDED } from '../../constants/';
 
-var actionnableStateClassNameAssocitations = {
-  PLAYSTATE_INIT: 'play',
-  PLAYSTATE_PAUSED: 'play',
-  PLAYSTATE_PLAYING: 'pause',
-  PLAYSTATE_ENDED: 'repeat'
-};
+class PlayButtonContainer extends Component {
+  getActionnableClassName () {
+    let { playstate } = this.props;
 
-var classNameActionnableStateAssocitations = {
-  'play': PLAYSTATE_PLAYING,
-  'repeat': PLAYSTATE_PLAYING,
-  'pause': PLAYSTATE_PAUSED
-};
+    switch (playstate) {
+      case PLAYSTATE_PLAYING:
+        return 'pause';
+      case PLAYSTATE_INIT:
+      case PLAYSTATE_PAUSED:
+        return 'play';
+      case PLAYSTATE_ENDED:
+        return 'repeat';
+    }
+  }
+  getActionnableAction () {
+    let { playstate } = this.props;
 
-const getClassNameByPlaystate = (currentPlaystate) => {
-  return actionnableStateClassNameAssocitations[currentPlaystate];
-};
+    switch (playstate) {
+      case PLAYSTATE_PLAYING:
+        return pause;
+      case PLAYSTATE_INIT:
+      case PLAYSTATE_PAUSED:
+      case PLAYSTATE_ENDED:
+        return play;
+    }
+  }
+  render () {
+    let { onClick } = this.props;
+    return <PlaystateButton actionnableClassName={this.getActionnableClassName()} actionnableAction={this.getActionnableAction()} onClick={onClick} />;
+  }
+}
 
-const getPlaystateByClassName = (className) => {
-  return classNameActionnableStateAssocitations[className];
+PlayButtonContainer.propTypes = {
+  playstate: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
-    actionnablePlaystateClassName: getClassNameByPlaystate(state.get('playstate'))
+    playstate: state.get('playstate')
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updatePlaystateByClassName: (playstate) => { dispatch(updatePlaystate(getPlaystateByClassName(playstate))); }
+    onClick: (action) => dispatch(action())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlaystateButton);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayButtonContainer);
