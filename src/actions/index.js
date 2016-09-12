@@ -1,22 +1,22 @@
-import { PLAYSTATE_ENDED } from '../constants';
+import { PLAYSTATE_INIT, PLAYSTATE_PLAYING, PLAYSTATE_PAUSED, PLAYSTATE_ENDED } from '../constants';
 
 export const ATTACH_DOM = 'ATTACH_DOM';
 export const SET_VIDEO_DURATION = 'SET_VIDEO_DURATION';
-export const UPDATE_CURRENTTIME = 'UPDATE_CURRENTTIME';
+export const SET_CURRENTTIME = 'SET_CURRENTTIME';
 export const UPDATE_PLAYSTATE = 'UPDATE_PLAYSTATE';
 export const TOGGLE_MUTE = 'TOGGLE_MUTE';
 export const SEEK_BY_PERCENT = 'SEEK_BY_PERCENT';
 
 export function initPlayer (el) {
   return dispatch => {
-    dispatch(attachDOM(el));
+    dispatch({ type: ATTACH_DOM, el });
 
     el.addEventListener('canplay', function () {
-      dispatch(setDuration(el.duration));
+      dispatch({ type: SET_VIDEO_DURATION, duration: el.duration });
     }, false);
 
     el.addEventListener('timeupdate', function () {
-      dispatch(updateCurrentTime(el.currentTime));
+      dispatch({ type: SET_CURRENTTIME, currentTime: el.currentTime });
     }, false);
 
     el.addEventListener('ended', function () {
@@ -25,24 +25,26 @@ export function initPlayer (el) {
   };
 }
 
-export function attachDOM (el) {
-  return { type: ATTACH_DOM, el };
-}
-
-export function setDuration (duration) {
-  return { type: SET_VIDEO_DURATION, duration };
-}
-
-export function updateCurrentTime (currentTime) {
-  return { type: UPDATE_CURRENTTIME, currentTime };
+export const play = () => dispatch => {
+  state.get('el').play();
+  dispatch({ type: UPDATE_PLAYSTATE, PLAYSTATE_PLAYING });
 }
 
 export function updatePlaystate (playstate) {
+  switch (playstate) {
+    case PLAYSTATE_PLAYING:
+      state.get('el').play();
+      break;
+    case PLAYSTATE_PAUSED:
+      state.get('el').pause();
+      break;
+  }
+
   return { type: UPDATE_PLAYSTATE, playstate };
 }
 
-export function toggleMute () {
-  return { type: TOGGLE_MUTE };
+export function toggleMute (muted) {
+  return { type: TOGGLE_MUTE, muted };
 }
 
 export function seekByPercent (percent) {
