@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react'
 
 const Time = ({ duration, currentTime }) => {
   return (
@@ -7,12 +7,12 @@ const Time = ({ duration, currentTime }) => {
       <span className='divider'> / </span>
       <span className='duration'>{duration}</span>
     </div>
-  );
-};
+  )
+}
 
 Time.propTypes = {
   duration: PropTypes.string.isRequired,
   currentTime: PropTypes.string.isRequired
-};
+}
 
-export default Time;
+export default Time

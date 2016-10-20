@@ -1,32 +1,32 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import Video from '../containers/Video';
-import { Time, ProgressBar, PlaystateButton, VolumeButton } from '../containers/controls';
-import { PLAYSTATE_PLAYING } from '../constants';
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import Video from '../containers/Video'
+import { Time, ProgressBar, PlaystateButton, VolumeButton } from '../containers/controls'
+import { PLAYSTATE_PLAYING } from '../../constants'
 
 class App extends Component {
   handleHideShowMenu () {
-    let { playstate } = this.props;
-    let jarvipDOM = this.refs.jarvip;
-    let controlsDOM = this.refs.controls;
+    let { playstate } = this.props
+    let jarvipDOM = this.refs.jarvip
+    let controlsDOM = this.refs.controls
 
     jarvipDOM.onmouseover = () => {
-      controlsDOM.classList.remove('hidden');
-    };
+      controlsDOM.classList.remove('hidden')
+    }
     jarvipDOM.onmouseout = () => {
       if (playstate === PLAYSTATE_PLAYING) {
-        controlsDOM.classList.add('hidden');
+        controlsDOM.classList.add('hidden')
       }
-    };
+    }
   }
   componentDidMount () {
-    this.handleHideShowMenu();
+    this.handleHideShowMenu()
   }
   componentDidUpdate () {
-    this.handleHideShowMenu();
+    this.handleHideShowMenu()
   }
   render () {
-    const { video } = this.props;
+    const { video } = this.props
 
     return (
       <div className='jarvip' ref='jarvip'>
@@ -63,19 +63,19 @@ class App extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
 App.propTypes = {
   video: PropTypes.object.isRequired,
   playstate: PropTypes.string.isRequired
-};
+}
 
 const mapStateToProps = (state) => {
   return {
     playstate: state.get('playstate')
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(App)

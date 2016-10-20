@@ -3,8 +3,8 @@
 <p align="center">Just A Rather Very Intelligent Player</p>
 
 <p align="center">
-  <a href='https://github.com/Flet/semistandard'>
-    <img src='https://img.shields.io/badge/code%20style-semistandard-blue.svg' alt='Coding style' />
+  <a href='https://github.com/feross/standard'>
+    <img src='https://img.shields.io/badge/code%20style-standard-blue.svg' alt='Coding style' />
   </a>
 </p>
 
