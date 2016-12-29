@@ -4,7 +4,7 @@ import Jarvip from '../src/app'
 
 test('constructor should return config', () => {
   const config = {
-    targetEl: 'onsenfout',
+    target: 'onsenfout',
     video: {
       url: 'onsenfout',
       poster: 'onsenfout'

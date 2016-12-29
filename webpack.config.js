@@ -1,10 +1,11 @@
 import path from 'path'
 import precss from 'precss'
 import autoprefixer from 'autoprefixer'
+import FlowtypePlugin from 'flowtype-loader/plugin'
 import pkg from './package.json'
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/app.jsx',
   output: {
     path: path.join(__dirname, '/dist'),
     publicPath: '/dist',
@@ -14,8 +15,11 @@ module.exports = {
     umdNamedDefine: true
   },
   module: {
+    preLoaders: [
+      { test: /\.jsx?$/, loader: 'flowtype', exclude: /node_modules/ }
+    ],
     loaders: [{
-      test: /\.js?$/,
+      test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'babel'
     }, {
@@ -25,6 +29,12 @@ module.exports = {
       test: /\.(png|woff|woff2|eot|ttf|svg)$/,
       loader: 'url-loader?limit=100000'
     }]
+  },
+  plugins: [
+    new FlowtypePlugin()
+  ],
+  resolve: {
+    extensions: ['', '.js', '.jsx']
   },
   postcss: () => [precss, autoprefixer],
   debug: true,
